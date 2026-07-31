@@ -185,9 +185,11 @@
         .hero {
             position: relative;
             overflow: hidden;
-            min-height: 92vh;
-            padding-top: 170px;
-            padding-bottom: 110px;
+            height: 100vh;
+            height: 100dvh;
+            min-height: 620px;
+            padding-top: clamp(88px, 13vh, 132px);
+            padding-bottom: clamp(24px, 5vh, 56px);
             display: flex;
             align-items: center;
         }
@@ -210,16 +212,20 @@
             display: grid;
             grid-template-columns: minmax(0, 1.55fr) minmax(230px, 0.45fr);
             gap: 64px;
-            align-items: end;
+            align-items: start;
+        }
+
+        .hero-layout > div:first-child {
+            margin-top: 26px;
         }
 
         .en-badge {
             font-family: var(--font-en-title);
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             letter-spacing: 2.4px;
             color: var(--orange);
             text-transform: uppercase;
-            margin-bottom: 24px;
+            margin-bottom: clamp(10px, 2.6vh, 26px);
             display: inline-block;
         }
 
@@ -227,14 +233,14 @@
             display: flex;
             flex-direction: column;
             gap: 0;
-            margin-bottom: 30px;
+            margin-bottom: clamp(14px, 4vh, 34px);
             position: relative;
             z-index: 1;
         }
 
         .hero-word {
             font-family: var(--font-en-title);
-            font-size: clamp(3.5rem, 8.4vw, 7.4rem);
+            font-size: clamp(3rem, 15vh, 7.4rem);
             line-height: 0.84;
             letter-spacing: -0.055em;
             color: var(--white);
@@ -252,10 +258,10 @@
 
         .hero-word:nth-child(3) {
             color: rgba(255,255,255,.42);
-            font-size: clamp(1.4rem, 2.4vw, 2rem);
+            font-size: clamp(1.1rem, 3.4vh, 2rem);
             line-height: 1;
             letter-spacing: .12em;
-            margin: 20px 0 10px 18%;
+            margin: clamp(8px, 2vh, 20px) 0 clamp(4px, 1vh, 10px) 18%;
         }
 
         .hero-word:nth-child(4) {
@@ -264,26 +270,26 @@
         }
 
         .hero p {
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.68);
             max-width: 680px;
-            margin-bottom: 34px;
-            line-height: 1.85;
+            margin-bottom: clamp(16px, 3.6vh, 36px);
+            line-height: 1.6;
         }
 
         .hero-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .tag {
             background-color: rgba(255, 255, 255, 0.045);
             color: var(--white);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 9px 15px;
+            padding: 10px 16px;
             border-radius: 999px;
-            font-size: 0.84rem;
+            font-size: 0.92rem;
             font-weight: 700;
         }
 
@@ -293,10 +299,9 @@
             justify-self: end;
             align-self: center;
             margin-bottom: 0;
-            transform: translateY(-8px);
             border: 1px solid rgba(255,255,255,.14);
             border-radius: 18px;
-            padding: 18px 20px 20px;
+            padding: clamp(12px, 2vh, 18px) 20px clamp(14px, 2vh, 20px);
             background: rgba(255,255,255,.03);
         }
 
@@ -311,7 +316,7 @@
 
         .hero-stat {
             display: block;
-            padding: 16px 0;
+            padding: clamp(8px, 1.6vh, 16px) 0;
             border-top: 1px solid rgba(255,255,255,.12);
         }
 
@@ -323,10 +328,10 @@
         .hero-stat strong {
             display: block;
             font-family: var(--font-en-title);
-            font-size: clamp(1.65rem, 2.5vw, 2.4rem);
+            font-size: clamp(1.35rem, 2.6vh, 2.4rem);
             line-height: .92;
             color: var(--orange);
-            margin-bottom: 7px;
+            margin-bottom: clamp(3px, 0.8vh, 7px);
             letter-spacing: -0.04em;
         }
 
@@ -335,10 +340,10 @@
         }
 
         .hero-note {
-            margin-top: 10px;
+            margin-top: clamp(6px, 1.2vh, 10px);
             color: rgba(255,255,255,.42);
             font-size: .68rem;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .hero-stat span {
@@ -350,13 +355,26 @@
         }
 
         @media (max-width: 900px) {
-            .hero-layout { grid-template-columns: 1fr; gap: 46px; }
-            .hero { min-height: auto; }
+            .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+            .hero {
+                height: auto;
+                min-height: auto;
+                padding-bottom: 64px;
+            }
             .hero-word:nth-child(2), .hero-word:nth-child(3), .hero-word:nth-child(4) { margin-left: 0; }
+            .en-badge { margin-bottom: 18px; }
+            .hero-title-stack { margin-bottom: 22px; }
+            .hero-word:nth-child(3) { margin: 14px 0 8px 0; }
+            .hero p { margin-bottom: 26px; }
             .section-desc { white-space: normal !important; }
             .hero-panel {
                 justify-self: start;
                 transform: none;
+            }
+            .hero-profile {
+                height: auto;
+                aspect-ratio: 4 / 3;
+                object-position: center 30%;
             }
         }
 
@@ -364,12 +382,12 @@
         /* HERO PROFILE PHOTO — draft */
         .hero-profile {
             width: 100%;
-            aspect-ratio: 4 / 5;
+            height: clamp(200px, 27vh, 320px);
             object-fit: cover;
-            object-position: center 34%;
+            object-position: center 16%;
             display: block;
             border-radius: 14px;
-            margin-bottom: 18px;
+            margin-bottom: clamp(10px, 1.8vh, 18px);
             border: 1px solid rgba(255,255,255,.18);
             box-shadow: 0 14px 28px rgba(0,0,0,.28);
         }
@@ -379,7 +397,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 12px;
-            margin: -2px 0 14px;
+            margin: -2px 0 clamp(8px, 1.6vh, 14px);
             color: rgba(255,255,255,.62);
             font-size: .67rem;
             font-weight: 700;
